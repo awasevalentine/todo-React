@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@500&family=Lato:ital,wght@0,400;0,700;1,300;1,700&family=Mea+Culpa&family=Meow+Script&family=Merriweather&family=Sacramento&display=swap');
+
+.home-wrapper {
+height: 100%;
+width: 100%;
+}
+
+.sub-layer-1{
+    padding-top: 0px !important;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(159, 160, 161, 0),
+                    rgba(159, 160, 161, 0)  ), url('../../asset/images/globe.png');
+    background-position: center;
+    background-size: cover;
+    color: white;
+    /* color: red; */
+    text-align: center;
+
+}
+
+.sub-layer-1 p {
+    width: 35%;
+    text-align: center;
+    margin: 0 auto;
+    font-family: 'Lato', sans-serif;
+}
+
+
+.sub-layer-1-contnent {
+ margin: 10rem  0px auto;
+}
+
+.btn {
+    border: 1px solid #E04DB0;
+    background-color: #E04DB0;
+    color: #fff;
+    margin-top: 1rem;
+    margin-left: -2rem;
+    font-weight: 400;
+}
+
+.pl-3 {
+    margin-left: 10px;
+    animation: blinker 2s linear infinite;
+}
+
+h1 {
+    padding-top: 15rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+
+}
+
+
+
+@keyframes blinker {
+    80% {
+        opacity: 0;
+    }
+    
+}
+
+
+/* Media screen section*/
+
+/* Section for Phone*/
+
+@media screen and (max-width: 479px){
+
+    .header {
+        font-size: 1.5rem;
+        font-weight: 700;
+        padding-top: 5rem !important;
+    }
+
+    
+    .sub-layer-1 p {
+        width: 80% !important;
+        font-size: 16px !important;
+        margin: -8rem auto -.5rem auto !important;
+        font-family: 'Lato', sans-serif;
+        text-align: left;
+    }
+
+    .btn {
+        margin-left: -10px !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    
+}
+
+@media screen and (max-width: 991px) {
+
+}
+
+
+/* Section for Laptop*/
+@media  screen and (max-width: 1366px){
+
+    .header {
+        padding-top: 3.5rem;
+        font-weight: 700;
+
+    }
+
+    .sub-layer-1 p {
+        width: 30%;
+        font-size: 20px;
+        margin-top: -20px;
+        font-family: 'Lato', sans-serif;
+        text-align: left;
+    }
+
+    .btn {
+        margin-left: -50px;
+        
+    }
+    
+}
+
+@media screen and (min-width: 1367px) {
+
+    .header {
+        padding-top: 5rem;
+        font-weight: 700;
+
+    }
+
+    .sub-layer-1 p {
+        width: 30%;
+        font-size: 20px;
+        margin-top: -20px;
+        font-family: 'Lato', sans-serif;
+        text-align: left;
+    }
+
+    .btn {
+        margin-left: -50px;
+        
+    }
+    
+}

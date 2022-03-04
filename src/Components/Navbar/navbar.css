@@ -1,0 +1,56 @@
+
+.navbar-wrapper{
+    background-color: #2b388b;
+    padding: 1.2rem 0px .5rem 0px;
+}
+
+.contact-about{
+    right: 10%;
+    /* left: auto; */
+    position: absolute;
+    color: blue;
+}
+
+h5 {
+    /* color: #EF6D6D; */
+    color: white;
+
+}
+
+.brand-name {
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    margin-left: 3rem;
+    letter-spacing: 3.5px;
+}
+
+.brand-name:hover {
+    color: #000;
+}
+
+
+
+/*Section for Media query*/
+
+@media screen and (max-width: 479px){
+    .brand-name {
+        margin: 0 6.5rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    
+}
+
+@media screen and (max-width: 991px) {
+
+}
+
+
+/* Section for Laptop*/
+@media  screen and (max-width: 1366px){
+}
+
+@media screen and (min-width: 1367px) {
+}
