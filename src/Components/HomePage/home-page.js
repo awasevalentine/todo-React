@@ -12,7 +12,7 @@ function Home() {
                     <p>Even though every task is essential, some task or engagement shouldn't be missed.
                         Keep track of such task or activities and have them attended to.
                     </p>
-                    <Link to='/new-task' className='btn'>Get started
+                    <Link to='/todos' className='btn'>Get started
                     <i className="fa fa-long-arrow-right pl-3" aria-hidden="true"></i></Link>
                 </div>
             </div>
