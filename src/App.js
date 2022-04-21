@@ -2,9 +2,12 @@ import './App.css';
 import Home from './Components/HomePage/home-page';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavbarPage from './Components/Navbar/navbar';
-import Todos from './Components/Todos/todos';
-import NewTodo from './Components/New-Todos/new-todo';
-import TodoDetails from './Components/Todo-Details/todo_details';
+import Todos from './Pages/Todos/todos';
+import NewTodo from './Pages/Todos/addNew-todos';
+import TodoDetails from './Components/Todo/todo_details';
+import EditTodo from './Pages/Todos/edit-todo';
+
+export const BASE_URL = 'http://localhost:8081/'
 
 function App() {
 
@@ -14,9 +17,10 @@ function App() {
       <NavbarPage />
       <Routes>
         <Route exact path='/' element={ <Home />} />
-        <Route path='todos' element={<Todos />} />
-        <Route path='new-todos' element={<NewTodo />} />
-        <Route path='todo-details' element={<TodoDetails />} />
+        <Route exact path='todos' element={<Todos />} />
+        <Route exact path='new-todos' element={<NewTodo />} />
+        <Route exact path='todo-details/:todoId' element={<TodoDetails />} />
+        <Route exact path='edit-todo/:todoId' element = {<EditTodo />} />
       </Routes>
     </div>
     </Router>

@@ -1,67 +1,67 @@
-import { Alert } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { Container, Form, Row, Col, Spinner } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
-import './new-todos.css'
-
+import './css/edit-todo.css'
+import { useDispatch, useSelector } from "react-redux";
+import TodoService from "../../Services/todosService";
+import { reset } from "../../Redux/todoSlice";
+import { ErrorAlert } from "../../Components/ErrorHandling/ErrorAlert";
+import { TodoToast } from "../../Components/Toast/toast";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify'
 const NewTodo = () => {
-    console.log("even this one")
+
+    const { addNewTodos } = TodoService
+
     const [taskTitle, setTaskTitle ] = useState('')
     const [taskDate, setTaskDate ] = useState('')
     const [taskDescription, setTaskDescription ] = useState('')
-    const [isPending, setPending] = useState(false);
-    const [errorReport, setErorrReport ] = useState(null)
+    const [isPending, setIsPending ] = useState(false)
+
+    const { addStatus, error } = useSelector(state => state.todos)
+    const dispatch = useDispatch()
     const route = useNavigate();
 
 
+useEffect(()=>{
+
+    if(addStatus === 'failed'){
+        setIsPending(false)
+    }
+    if(addStatus === 'loading'){
+        setIsPending(true)
+    }
+
+    if(addStatus === 'success'){
+        toast.success("Todo was successfully added!")
+        setTimeout(()=>{
+            route('/todos')
+            },1000)
+        dispatch(reset())
+    }
+
+},[addStatus, dispatch,route])
 
 
-    const formSubmit =(e) => {
+const formSubmit =(e) => {
         e.preventDefault();
-        setPending(true)
-        const url = 'http://localhost:8081/task';
         let payload = {
             taskTitle, taskDate, taskDescription
         }
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(payload),
-        })
-        .then((res) =>{
-            if(res.ok){
-                setPending(false);
-                route('/todos')
-            }
-        })
-        .catch((err) => {
-            if(err){
-                setPending(false);
-                setErorrReport(err.message)
-            }
-        })
+        dispatch(addNewTodos(payload))
+        setTaskDate('')
+        setTaskDescription('')
+        setTaskTitle('')
     }
 
-    function ErrorAlert(e){
-        if(e){
-            return (
-                <Alert variant="danger" onClose={()=>setErorrReport(false)} dismissible>
-                    <p>
-                        {errorReport}
-                    </p>
-                </Alert>
-            )
-        }
-    }
+
 
     return ( 
         <div className="new-todo-wrapper">
+            {<TodoToast />}
             <div className="alert-wrapper">
                 {
-                errorReport && ErrorAlert(errorReport)
+                    error && <ErrorAlert error={error} />
                 }
             </div>
             <h1 className="heading"> Create Your Todos</h1>
@@ -91,7 +91,7 @@ const NewTodo = () => {
                             <Col sm={12} md={12}>
                                     <div className="description form-field">
                                         <label>Task Description</label>
-                                        <Form.Control className="w-2" as="textArea" 
+                                        <Form.Control className="w-2" as="textarea" 
                                         rows={3} value={taskDescription} onChange={(e) => setTaskDescription(e.target.value)}
                                         />
                                     </div>

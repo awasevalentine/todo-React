@@ -22,7 +22,7 @@ const useFetchTodo = (url) => {
         .catch((err)=>{
             setErrorReport(err.message)
             setIsPending(false)
-            console.log("Error ", err)
+            console.log("Error ", err.message)
         })
     },[]);
 
