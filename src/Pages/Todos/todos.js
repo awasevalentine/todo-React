@@ -46,6 +46,7 @@ const Todos = () => {
 
     return ( 
         <div className="todos-wrapper">
+                <h1 id='todo-header-wrapper'>Create a List of Todos</h1>
             <div className="new-todo">
                 <Link to="/new-todos" className='btn-new'>New <i className="fa fa-plus" aria-hidden="true"></i></Link>
             </div>
